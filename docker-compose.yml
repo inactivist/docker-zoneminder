@@ -16,7 +16,7 @@ services:
       - "./mysql/cache:/etc/mysql:ro"
     networks:
       - cctv
-    restart: on-failure:5
+    restart: unless-stopped
 
   zm:
     image: quantumobject/docker-zoneminder
@@ -39,7 +39,7 @@ services:
       - cctv
     ports:
       - "80:80"
-    restart: on-failure:5
+    restart: unless-stopped
 
 networks:
   cctv:
